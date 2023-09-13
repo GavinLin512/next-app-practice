@@ -30,9 +30,7 @@ const SingleLevel = ({ item }) => {
         !item.level?
         <Menu.Item to={item.to} primaryText={item.title} leftIcon={item.icon} />
             :
-            <div className="pl-8 ml-4">
-                <Menu.Item to={item.to} primaryText={item.title} leftIcon={item.icon} />
-            </div>
+            <Menu.Item sx={{ paddingLeft: 4 }} to={item.to} primaryText={item.title} leftIcon={item.icon} />
         // <ListItem button>
         //     <ListItemIcon>{item.icon}</ListItemIcon>
         //     <ListItemText primary={item.title} />
@@ -50,11 +48,11 @@ const MultiLevel = ({ item }) => {
 
     return (
         <React.Fragment>
-            <ListItem button onClick={handleClick}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.title} />
-                {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </ListItem>
+            <Menu.Item button onClick={handleClick} to={item.to??''} primaryText={item.title} leftIcon={open ? <ExpandMoreIcon /> : item.icon} />
+            {/*<ListItem button onClick={handleClick}>*/}
+            {/*    <ListItemIcon>{open ? <ExpandMoreIcon /> : item.icon}</ListItemIcon>*/}
+            {/*    <ListItemText primary={item.title} />*/}
+            {/*</ListItem>*/}
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                     {children.map((child, key) => (

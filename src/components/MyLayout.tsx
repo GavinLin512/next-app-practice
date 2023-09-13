@@ -5,7 +5,7 @@ import MyMenu from './menu/MyMenu'
 import {ReactQueryDevtools} from "react-query/devtools";
 export const MyLayout = props => (
     <>
-        <Layout {...props} appBar={MyAppBar} menu={MyMenu} />
+        <Layout {...props} appBar={MyAppBar} menu={MyMenu} appBarAlwaysOn />
         <ReactQueryDevtools />
     </>
 );

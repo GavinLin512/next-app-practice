@@ -4,6 +4,7 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import StorefrontIcon from '@mui/icons-material/Storefront'
 import GavelIcon from '@mui/icons-material/Gavel';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import PeopleIcon from '@mui/icons-material/People';
 
 
 export const menuConfig = [
@@ -40,4 +41,9 @@ export const menuConfig = [
             },
         ]
     },
+    {
+        icon: <PeopleIcon />,
+        title: '徵信小組預覽',
+        to: 'client/ccis'
+    }
 ]

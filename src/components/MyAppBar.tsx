@@ -2,21 +2,21 @@
 import * as React from 'react';
 import { AppBar, TitlePortal } from 'react-admin';
 import Box from '@mui/material/Box';
-import {Theme} from "@/components/Theme";
+// import {MyTheme} from "@/components/MyTheme";
 import Logo from "@/components/Logo";
 
 
 
 export const MyAppBar = () => (
     <AppBar
-        sx={{
-            color: 'black',
-            background: `${Theme.AppBarTheme.background}`,
-            '& .RaAppBar-toolbar': {
-                paddingBottom: 2,
-                paddingTop:1
-            },
-        }}
+        // sx={{
+        //     color: 'black',
+        //     background: `${MyTheme.AppBarTheme.background}`,
+        //     '& .RaAppBar-toolbar': {
+        //         paddingBottom: 2,
+        //         paddingTop:1
+        //     },
+        // }}
     >
         <TitlePortal />
         <Box flex="1" />
