@@ -19,6 +19,7 @@ const AdminApp = () => (
         loginPage={MyLoginPage}
         theme={MyTheme}
         applicant={Applicant}
+        dashboard={Applicant}
     >
         {/*<Resource*/}
         {/*    name="users"*/}
@@ -32,7 +33,7 @@ const AdminApp = () => (
         {/*    edit={EditGuesser}*/}
         {/*    recordRepresentation="title"*/}
         {/*/>*/}
-        <CustomRoutes noLayout>
+        <CustomRoutes>
             <Route path="/client/applicant" element={<Applicant />} />
         </CustomRoutes>
         {/*<Resource name="comments" list={ListGuesser} edit={EditGuesser} />*/}

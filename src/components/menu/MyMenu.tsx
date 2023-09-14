@@ -5,6 +5,7 @@ import {Collapse, List, ListItem, ListItemIcon, ListItemText} from "@mui/materia
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {menuConfig} from "@/components/menu/MenuConfig";
+import {Box} from "@mui/system";
 
 export function hasChildren(item) {
     const { items: children } = item;
@@ -42,13 +43,15 @@ const MultiLevel = ({ item }) => {
     const { items: children } = item;
     const [open, setOpen] = useState(false);
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault(); // 避免展開選單第一層執行畫面轉導
         setOpen((prev) => !prev);
     };
 
     return (
         <React.Fragment>
-            <Menu.Item button onClick={handleClick} to={item.to??''} primaryText={item.title} leftIcon={open ? <ExpandMoreIcon /> : item.icon} />
+            {/* 展開選單 to 預設#，若預設空白則會 active */}
+            <Menu.Item button onClick={handleClick} to={item.to??'#'} primaryText={item.title} leftIcon={open ? <ExpandMoreIcon /> : item.icon} />
             {/*<ListItem button onClick={handleClick}>*/}
             {/*    <ListItemIcon>{open ? <ExpandMoreIcon /> : item.icon}</ListItemIcon>*/}
             {/*    <ListItemText primary={item.title} />*/}
@@ -73,6 +76,15 @@ const MultiLevel = ({ item }) => {
 //     </Menu>
 // );
 
-export default function MyMenu() {
+function MyMenuMap() {
     return menuConfig.map((item, key) =>  <MenuItem key={key} item={item} />);
 }
+
+export const MyMenu = () => (
+    <>
+        <Box sx={{
+            paddingTop: 0
+        }}></Box>
+        <MyMenuMap></MyMenuMap>
+    </>
+)

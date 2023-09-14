@@ -1,12 +1,19 @@
-// import {createTheme} from "@mui/system";
-//
-// export const MyTheme = createTheme({
-//     AppBarTheme: {
-//
-//     }
-// })
+import {createTheme} from "@mui/system";
+import {red, yellow, gray} from "@mui/material/colors";
 
 import { defaultTheme } from 'react-admin';
+
+export const CustomTheme = createTheme({
+    palette: {
+        MCDYellow: yellow[500],
+    },
+    Login: {
+        BackgroundLeft: {
+            backgroundColor: red[200]
+        },
+
+    }
+})
 
 export const MyTheme = {
     ...defaultTheme,

@@ -1,10 +1,10 @@
 import { AuthProvider } from 'react-admin';
 
 const authProvider: AuthProvider = {
-    login: ({ username, password }) => {
-        const request = new Request('https://mydomain.com/authenticate', {
+    login: ({ email, password }) => {
+        const request = new Request(process.env.NEXT_PUBLIC_BACKEND_URL+'/login', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
         return fetch (request)
@@ -21,9 +21,29 @@ const authProvider: AuthProvider = {
                 throw new Error('Network error')
             });
     },
-    checkAuth: () => {
-        // Required for the authentication to work
+    // called when the user attempts to log in
+    // login: ({ email }) => {
+    //     localStorage.setItem("username", email);
+    //     // accept all username/password combinations
+    //     return Promise.resolve();
+    // },
+    // called when the user clicks on the logout button
+    logout: () => {
+        localStorage.removeItem("username");
         return Promise.resolve();
+    },
+    // called when the API returns an error
+    checkError: ({ status }: { status: number }) => {
+        if (status === 401 || status === 403) {
+            localStorage.removeItem("username");
+            return Promise.reject();
+        }
+        return Promise.resolve();
+    },
+    checkAuth: () => {
+        return localStorage.getItem("username")
+            ? Promise.resolve()
+            : Promise.reject();
     },
     getPermissions: () => {
         // Required for the authentication to work
