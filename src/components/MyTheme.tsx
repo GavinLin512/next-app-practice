@@ -6,6 +6,7 @@ import { defaultTheme } from 'react-admin';
 export const CustomTheme = createTheme({
     palette: {
         MCDYellow: yellow[500],
+        mode: 'dark'
     },
     Login: {
         BackgroundLeft: {

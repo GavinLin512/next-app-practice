@@ -1,17 +1,19 @@
 import { Card, CardContent, CardHeader } from "@mui/material";
+import {useAuthenticated} from "react-admin";
+import { Title } from 'react-admin';
 
-export const Applicant = () => (
-    <Card>
-        <CardHeader title="Welcome to the administration" />
-        <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-    </Card>
-);
+export const Applicant = () => {
+    useAuthenticated();
+    return (
+        <>
+            <Title title="發起人預覽" />
+            <Card>
+                <CardHeader title="Welcome to the administration" />
+                <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+            </Card>
+        </>
 
-export default Applicant;
-// export const Applicant = () => {
-//     return (
-//         <div>
-//             applicant
-//         </div>
-//     )
-// }
+        )
+};
+
+// export default Applicant;

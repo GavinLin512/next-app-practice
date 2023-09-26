@@ -175,7 +175,7 @@ const MyLoginPage = () => {
                 </Grid>
                 <Grid
                     item
-                    xs={false}
+                    xs={12}
                     sm={7}
                     md={8}
                     sx={{
